@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+}
+
+
+.side-bar {
+  background-color: #253141;
+  width: 300px;
+  height: 100%;
+  &__user-name {
+    height: 100px;
+    padding-top: 40px;
+  }
+  .top-items {
+    height: 20px;
+    margin: 0 20px;
+    @include flexContents();
+    line-height: 20px;
+    &__name {
+      color: $colorWhite;
+      font-weight: bold;
+    }
+    &__icon {
+      display: flex;
+      &__left-icon {
+        color: $colorWhite;
+        font-size: 0.9em;
+      }
+      &__right-icon {
+        color: $colorWhite;
+        padding-left: 5px;
+        font-size: 0.9em;
+      }
+    }
+  }
+  &__group-list {
+    background-color: #2f3e51;
+    height: calc(100vh - 100px);
+    &__contents {
+      color: $colorWhite;
+      font-weight: bold;
+      padding: 20px 20px 40px 20px;
+      &__name {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      &__text {
+        font-size: 11px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+.chat-main {
+  background-color: $colorWhite;
+  width: calc(100vw - 300px);
+  height: 100%;
+  &__group-info {
+    height: 100px;
+    border-bottom: solid 1px #eeeeee;
+    @include flexContents();
+    padding: 0 40px;
+    &__left-contents {
+      padding-top: 35px;
+      &__name {
+        color: $colorBlack;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      &__member {
+        color: #999999;
+        font-size: 12px;
+        display: flex;
+      }
+    }
+    &__right-contents {
+      text-decoration: none;
+      &__btn {
+        border: 1px solid #38aef0;
+        width: 72px;
+        height: 40px;
+        color: #38aef0;
+        text-align: center;
+        line-height: 40px;
+        margin-top: 30px;
+      }
+    }
+  }
+  &__list {
+    background-color: #fafafa;
+    height: calc(100vh - 190px);
+    &__message {
+      padding: 35px 0 0 40px;
+      &__name {
+        color: $colorBlack;
+        font-size: 16px;
+        display: flex;
+        font-weight: bold;
+        &__day{
+          font-size: 12px;
+          color: #999999;
+          margin-left: 10px;
+          font-weight: normal;
+        }
+      }
+      &__text {
+        color: #434a54;
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 46px;
+      }
+    }
+  }
+  &__form {
+    background-color: #d2d2d2;
+    height: 90px;
+    padding: 20px 50px 20px 40px;
+    &__contents {
+      @include flexContents();
+      &__type {
+        width: calc(100% - 100px);
+        position: relative;
+        &__text {
+          width: 100%;
+          height: 50px;
+          border: none;
+          padding-left: 10px;
+        }
+        &__icon {
+          position: absolute;
+          right: 10px;
+          font-size: 20px;
+          line-height: 50px;
+          input {
+            display: none;
+          }
+        }
+      }
+      &__btn {
+        background-color: #38aef0;
+        border: none;
+        color: $colorWhite;
+        height: 50px;
+        margin-left: 15px;
+        padding: 0 30px;
+      }
+    }
+  }
+}
