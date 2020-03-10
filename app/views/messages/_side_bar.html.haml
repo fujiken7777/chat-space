@@ -5,18 +5,16 @@
         = current_user.name
       %ul.top-items__icon
         %li
-          = link_to "#", class: "top-items__icon__left-icon" do
+          = link_to new_group_path(current_user), class: "top-items__icon__left-icon" do
             %i.fas.fa-edit
         %li 
           = link_to edit_user_path(current_user), class: "top-items__icon__right-icon" do
             %i.fas.fa-cog
   .side-bar__group-list
-    .side-bar__group-list__contents
-      .side-bar__group-list__contents__name
-        techchamp
-      .side-bar__group-list__contents__text
-        まだメッセージがありません
-      .side-bar__group-list__contents__name
-        techchamp
-      .side-bar__group-list__contents__text
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      = link_to '#' do
+        .side-bar__group-list__contents
+          %p.side-bar__group-list__contents__name
+            = group.name
+          %p.side-bar__group-list__contents__text
+            まだメッセージがありません
