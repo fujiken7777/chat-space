@@ -2,34 +2,24 @@
   .chat-main__group-info
     .chat-main__group-info__left-contents
       %h2.chat-main__group-info__left-contents__name
-        test
+        = @group.name
       %ul.chat-main__group-info__left-contents__member
         Member：
         %li.chat-main__group-info__left-contents__member__list
-          masa
-    = link_to "#", class: "chat-main__group-info__right-contents" do
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group), class: "chat-main__group-info__right-contents" do
       .chat-main__group-info__right-contents__btn
         Edit
   .chat-main__list
-    .chat-main__list__message
-      .chat-main__list__message__name
-        masa
-        .chat-main__list__message__name__day
-          2020/3/6(Fri) 21:11:11
-      .chat-main__list__message__text
-        おはよう！
-      .chat-main__list__message__name
-        masa
-        .chat-main__list__message__name__day
-          2020/3/6(Fri) 21:11:11
-      .chat-main__list__message__text
-        おはよう！
-
+    = render @messages
+      
   .chat-main__form
     .chat-main__form__contents
-      .chat-main__form__contents__type
-        %input.chat-main__form__contents__type__text{name: "message[content]", placeholder: "type a message", type: "text", value: ""}/
-        %label{class: "chat-main__form__contents__type__icon"}
-          %i.fas.fa-image
-          %input{type: "file"}
-      %input.chat-main__form__contents__btn{name: "commit", placeholder: "Send", type: "submit", value: "Send"}/
+      = form_for [@group, @message] do |f|
+        .form-type
+          = f.text_field :content, class: 'form-type__text', placeholder: 'type a message'
+          = f.label :image, class: 'form-type__icon' do
+            %i.fas.fa-image
+            = f.file_field :image
+        = f.submit 'Send', class: 'form-btn'
